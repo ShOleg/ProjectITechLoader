@@ -24,7 +24,7 @@ import javax.swing.*;
  * <p>
  * Company: </p>
  *
- * @author not attributable
+ * @author ShOleg
  * @version 1.0
  */
 public final class Application {

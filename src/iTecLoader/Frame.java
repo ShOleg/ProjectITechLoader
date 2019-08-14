@@ -40,7 +40,7 @@ public class Frame extends JFrame {
     this.setSize(new Dimension(498, 207));
     this.setTitle("Обновление библиотек");
 
-    this.setIconImage(Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("java_jar.png")));
+    this.setIconImage(Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("iTecLoader/java_jar.png")));
 
     progress.setPreferredSize(new Dimension(148, 30));
 
@@ -51,7 +51,7 @@ public class Frame extends JFrame {
     jLabel2.setHorizontalAlignment(SwingConstants.CENTER);
     jLabel2.setText("Тех.Корпорация");
 
-    jLabel3.setIcon( new ImageIcon( this.getClass().getResource("java_jar.png")));
+    jLabel3.setIcon( new ImageIcon( this.getClass().getResource("iTecLoader/java_jar.png")));
 
     contentPane.add(progress,   new GridBagConstraints(0, 2, 2, 1, 0.0, 0.0,GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(35, 0, 0, 0), 350, 0));
     contentPane.add(jLabel1,       new GridBagConstraints(1, 1, 1, 1, 0.0, 0.0,GridBagConstraints.WEST, GridBagConstraints.BOTH, new Insets(15, 10, 0, 0), 0, 0));

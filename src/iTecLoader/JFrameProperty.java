@@ -43,7 +43,7 @@ public final class JFrameProperty extends javax.swing.JFrame implements ActionLi
         this.setPreferredSize(null);
 
         setTitle("Свойства программы " + nameTask);
-        setIconImage(Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("java.png")));
+        setIconImage(Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("iTecLoader/java.png")));
         setCenter();
 
         if (parameterConfig == true) {
