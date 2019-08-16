@@ -10,6 +10,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
+import java.util.Objects;
 //import java.util.logging.Level;
 //import java.util.logging.Logger;
 import javax.swing.*;
@@ -27,9 +28,9 @@ import javax.swing.*;
  * @author ShOleg
  * @version 1.0
  */
+@SuppressWarnings({"WeakerAccess", "ConstantConditions"})
 public final class Application {
 
-    private boolean packFrame = false;
     public static java.net.URLClassLoader cloader;
     private int n = 0;
     private File currenDirLib;
@@ -64,6 +65,8 @@ public final class Application {
                 }
             }
         }
+
+        double xx= "10";
 
         if (!new File(currentDir, iniFile).exists()) {
             initPropDialog();
@@ -104,16 +107,14 @@ public final class Application {
         fp.setVisible(true);
     }
 
+    @SuppressWarnings("ConstantConditions")
     void ОбновитьБиблиотеки()  {
 
         ArrayList<File> arrayLib = getLib();
         if (arrayLib.size() > 0) {
             frame = new Frame();
-            if (packFrame) {
-                frame.pack();
-            } else {
-                frame.validate();
-            }
+            boolean packFrame = false;
+            frame.validate();
             //Center the window
             Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
             Dimension frameSize = frame.getSize();
@@ -141,6 +142,7 @@ public final class Application {
         String classpath = "mail.jar" + classPathSeparator + "beansbinding.jar" + classPathSeparator;
 
         File[] arrayTechLib = currenDirLib.listFiles(jarFilter);
+        assert arrayTechLib != null;
         for (File f : arrayTechLib) {
             classpath += f.getPath() + classPathSeparator;
         }
@@ -154,7 +156,7 @@ public final class Application {
         System.setProperty("java.class.path", System.getProperty("java.class.path") + classPathSeparator + classpath);
 
         try {
-            java.net.URL tmp[] = new java.net.URL[arrayTechLib.length + fsOO.length];
+            java.net.URL[] tmp = new java.net.URL[arrayTechLib.length + fsOO.length];
             int count = 0;
             for (File file : arrayTechLib) {
                 tmp[count++] = file.toURI().toURL();
@@ -180,7 +182,7 @@ public final class Application {
         try {
             Class cl = Class.forName(startTask, false, cloader);
             @SuppressWarnings("unchecked")
-            Constructor constr = cl.getConstructor(new Class[]{String.class});
+            Constructor constr = cl.getConstructor(String.class);
             constr.newInstance(iniFile);
         } catch (ClassNotFoundException | IllegalAccessException | IllegalArgumentException | InstantiationException | NoSuchMethodException | SecurityException | InvocationTargetException ex) {
             System.out.println(ex.getMessage());
@@ -257,7 +259,7 @@ public final class Application {
         File userDirLibs = new java.io.File(currentDir, "/Lib");
         File[] arrayUserTechLib = userDirLibs.listFiles((File dir, String name) -> name.endsWith("jar"));
 
-        for (File file : arrayUserTechLib) {
+        for (File file : Objects.requireNonNull(arrayUserTechLib)) {
             String z = file.getName();
             File x = new File(IniSettings.get(IniConst.APP_SERVER) + "/Bin/" + z);
             if (!x.exists()) {
