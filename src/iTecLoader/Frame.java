@@ -68,6 +68,9 @@ public class Frame extends JFrame {
     }
   }
 
+  public JProgressBar getProgress() {
+    return progress;
+  }
 }
 
 

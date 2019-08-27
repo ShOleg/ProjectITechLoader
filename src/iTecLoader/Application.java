@@ -1,6 +1,7 @@
 package iTecLoader;
 
 import java.awt.*;
+import java.awt.Frame;
 import java.io.*;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -35,7 +36,7 @@ public final class Application {
     private int n = 0;
     private File currenDirLib;
     private String iniFile = "";
-    private Frame frame = null;
+    private iTecLoader.Frame frame = null;
     private String startTask = "";
     private File currentDir = PathConst.userDir;
     private final boolean showListIni;
@@ -112,7 +113,7 @@ public final class Application {
 
         ArrayList<File> arrayLib = getLib();
         if (arrayLib.size() > 0) {
-            frame = new Frame();
+            frame = new iTecLoader.Frame();
             boolean packFrame = false;
             frame.validate();
             //Center the window
@@ -127,7 +128,7 @@ public final class Application {
             frame.setLocation((screenSize.width - frameSize.width) / 2, (screenSize.height - frameSize.height) / 2);
             frame.setVisible(true);
 
-            updateLib(arrayLib, frame.progress);
+            updateLib(arrayLib, frame.getProgress());
 
         }
 
