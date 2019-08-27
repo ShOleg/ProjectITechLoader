@@ -66,7 +66,7 @@ public final class Application {
             }
         }
 
-        double xx= "10";
+
 
         if (!new File(currentDir, iniFile).exists()) {
             initPropDialog();
