@@ -469,7 +469,7 @@ public final class JFrameProperty extends javax.swing.JFrame implements ActionLi
     private void btnChangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeActionPerformed
         try {
 
-            putIniData(nameTask + ".ini");
+            putIniData(nameTask);
 
             if (flag) {
                 System.exit(0);
